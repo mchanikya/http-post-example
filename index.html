@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>HTTP POST EX</title>
+    <script type="text/javascript" src='lib/angular.min.js'></script>
+    <script type="text/javascript" src='app.js'></script>
+  </head>
+
+  <body ng-app='httpPostDemoApp'>
+    <div class="container" ng-controller='registerFormController as formCtrl'>
+        <form class="form" novalidate name='userRegistration'>
+          <input type="text" name="fName" value="" placeholder="First Name" ng-model='formCtrl.user.fName' ng-minlength='4' ng-maxlength='10'>
+          <span ng-if='userRegistration.fName.$error.minlength && userRegistration.fName.$touched' style='color:red;'>User first Name is required</span>
+          <br>
+          <input type="text" name="lName" value="" placeholder="Last Name" ng-model='formCtrl.user.lName' ng-minlength='4' ng-maxlength='10'>
+          <span ng-if='userRegistration.lName.$error.minlength && userRegistration.lName.$touched' style='color:red;'>User Last Name is required </span>
+          <br>
+          <input type="email" name="eMail" value="" placeholder="email" ng-model='formCtrl.user.email'>
+          <span ng-if='userRegistration.eMail.$touched' style='color:red;'>Email is required </span>
+          <br>
+          <input type="phone" name="pNumber" value="" placeholder="Phone Number" ng-model='formCtrl.user.pNum'>
+          <span ng-if='userRegistration.pNumber.$touched' style='color:red;'>Phone number is required </span>
+          <br>
+          <button type="button" name="button" ng-disabled='!userRegistration.$invalid' ng-click='formCtrl.registerForm(formCtrl.user)'>Register</button>
+        </form>
+    </div>
+  </body>
+</html>
